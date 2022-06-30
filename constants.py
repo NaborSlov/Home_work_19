@@ -1,0 +1,6 @@
+PWD_HASH_SALT = b'N~1?ecRe!@'
+PWD_HASH_ITERATOR = 100_000
+SECRET = 'SeghR2.[]'
+ALGO = 'HS256'
+HASH_NAME = 'sha256'
+

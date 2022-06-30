@@ -16,7 +16,6 @@ class DirectorService:
 
     def update(self, director_d):
         self.dao.update(director_d)
-        return self.dao
 
     def delete(self, rid):
         self.dao.delete(rid)
