@@ -32,7 +32,7 @@ class DirectorView(Resource):
         return sm_d, 200
 
     @admin_required
-    def put(self):
+    def put(self, rid):
         director_data = request.json
         director_service.update(director_data)
         return 203

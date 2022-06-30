@@ -8,6 +8,9 @@ from constants import HASH_NAME, PWD_HASH_SALT, PWD_HASH_ITERATOR, SECRET, ALGO
 
 
 def get_hash(password):
+    """
+    Функция для хеширования пароля
+    """
     return hashlib.pbkdf2_hmac(
         HASH_NAME,
         password.encode('utf-8'),
@@ -17,6 +20,9 @@ def get_hash(password):
 
 
 def generator_token(data_user: dict) -> dict:
+    """
+    Функция для генерации access_token(30 мин) и refresh_token(130 дней)
+    """
     min30 = datetime.datetime.utcnow() + datetime.timedelta(minutes=30)
     data_user['exp'] = calendar.timegm(min30.timetuple())
     access_token = jwt.encode(data_user, SECRET, algorithm=ALGO)
@@ -29,4 +35,7 @@ def generator_token(data_user: dict) -> dict:
 
 
 def decode_token(token):
+    """
+    Функция для декодирования токена
+    """
     return jwt.decode(token, SECRET, algorithms=ALGO)

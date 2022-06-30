@@ -8,6 +8,10 @@ user_ns = Namespace('users')
 @user_ns.route('/')
 class UsersView(Resource):
     def post(self):
+        """
+        Регистрация нового пользователя
+        """
         user_data = request.json
         user_service.create(user_data)
-        return "", 201, {'location': f"/{user_ns.path}/{user_data.get('username')}"}
+        new_user = user_service.get_one_by_usernames(user_data.get('username'))
+        return "", 201, {'location': f"/{user_ns.path}/{new_user.id}"}
